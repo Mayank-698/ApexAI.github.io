@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Aggregator</title>
+    <style>
+        body { font-family: Arial; padding: 20px; background-color: #f4f4f4; }
+        h1 { color: #333; }
+        textarea, input[type="submit"] {
+            width: 100%; padding: 10px; margin-top: 10px;
+        }
+        .response-box {
+            background: white; padding: 15px; margin-top: 20px; border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>AI Aggregator</h1>
+    <form method="POST" action="/ask">
+        <textarea name="question" placeholder="Ask something..." required></textarea>
+        <input type="submit" value="Ask">
+    </form>
+
+    {% if question %}
+        <div class="response-box">
+            <h3>You asked:</h3>
+            <p>{{ question }}</p>
+
+            <h3>OpenAI's Answer:</h3>
+            <p>{{ openai_response }}</p>
+
+            <h3>HuggingFace (OpenAssistant) Answer:</h3>
+            <p>{{ hf_response }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>
